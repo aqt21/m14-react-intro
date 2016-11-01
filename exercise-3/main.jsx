@@ -24,9 +24,17 @@ var EmployeeRow = React.createClass({
 
 // Create an EmployeeTable element in which to render your EmployeeRows
 var EmployeeTable = React.createClass({
+    getInitialState:function() {
+        return({searchString:""});
+    }
+    filter:function(event) {
+        var value = event.target.value;
+        this.setState({searchString:value});
+    }
     render:function() {
         return(
             <div>
+                <input onChange={this.filter} />
                 <table>
                     <tbody>
                         <tr>
